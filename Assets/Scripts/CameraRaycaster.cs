@@ -4,8 +4,7 @@ public class CameraRaycaster : MonoBehaviour
 {
     public Layer[] layerPriorities =  { Layer.Enemy, Layer.Walkable };
 
-    [SerializeField]
-    private float distanceToBackground = 100f;
+    [SerializeField] private float distanceToBackground = 100f;
     private Camera viewCamera;
 
     private RaycastHit m_hit;
