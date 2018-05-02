@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
                     return;
             }
         }
+
         Vector3 movingVector = currentClickTarget - transform.position;
         if (movingVector.magnitude >= moveToWalkableRadius)
         {

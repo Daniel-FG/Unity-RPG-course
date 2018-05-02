@@ -136,6 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a043918973fa994469dec969ab77c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkable: {fileID: 2800000, guid: 0ceb41f430e9a7c44a3ce3f14984a5b6, type: 3}
+  enemy: {fileID: 2800000, guid: 1527bf9f020a8eb47b4c2e8195b55c79, type: 3}
+  nowhere: {fileID: 2800000, guid: 67813a3fa6b2a3942b9edfeb78febf85, type: 3}
 --- !u!114 &114844226627237718
 MonoBehaviour:
   m_ObjectHideFlags: 1
