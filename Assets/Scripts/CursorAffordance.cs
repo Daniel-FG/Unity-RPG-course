@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CameraRaycaster))]
 public class CursorAffordance : MonoBehaviour
 {
     [SerializeField] private Texture2D walkable = null;
@@ -19,7 +20,7 @@ public class CursorAffordance : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        switch (cameraRaycaster.LayerHit)
+        switch (cameraRaycaster.LayerHit)  //TODO 考慮改成有變化時在改變就好了
         {
             case Layer.Walkable:
                 Cursor.SetCursor(walkable, cursorHotSpot, CursorMode.Auto);  //Cursor.SetCursor() 設定自己想要的游標圖

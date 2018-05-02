@@ -7,14 +7,14 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] private float moveToWalkableRadius = 0.2f;
-    private ThirdPersonCharacter m_Character;   // A reference to the ThirdPersonCharacter on the object
+    private ThirdPersonCharacter thirdPersonController;   // A reference to the ThirdPersonCharacter on the object
     private CameraRaycaster cameraRaycaster;
     private Vector3 currentClickTarget;
         
     private void Start()
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-        m_Character = GetComponent<ThirdPersonCharacter>();
+        thirdPersonController = GetComponent<ThirdPersonCharacter>();
         currentClickTarget = transform.position;
     }
 
@@ -41,11 +41,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movingVector = currentClickTarget - transform.position;
         if (movingVector.magnitude >= moveToWalkableRadius)
         {
-            m_Character.Move(movingVector, false, false);
+            thirdPersonController.Move(movingVector, false, false);
         }
         else
         {
-            m_Character.Move(Vector3.zero, false, false);
+            thirdPersonController.Move(Vector3.zero, false, false);
         }
     }
 }

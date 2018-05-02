@@ -19,7 +19,7 @@ public class CameraRaycaster : MonoBehaviour
         get { return m_layerHit; }
     }
 
-    void Start() // TODO Awake?
+    void Start()
     {
         viewCamera = Camera.main;
     }
@@ -43,6 +43,7 @@ public class CameraRaycaster : MonoBehaviour
         m_layerHit = Layer.RaycastEndStop;
     }
 
+    //在回傳類別後方加上一個?  可以讓函式回傳null
     private RaycastHit? RaycastForLayer(Layer layer)
     {
         int layerMask = 1 << (int)layer; // See Unity docs for mask formation
@@ -52,8 +53,8 @@ public class CameraRaycaster : MonoBehaviour
         bool hasHit = Physics.Raycast(ray, out hit, distanceToBackground, layerMask);
         if (hasHit)
         {
-            return hit;
+            return hit;  //並不是每一次都可以傳回hit
         }
-        return null;
+        return null;  //其他狀況回傳null
     }
 }
