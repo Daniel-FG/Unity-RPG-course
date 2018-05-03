@@ -23,10 +23,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            print("Cursor raycast hit" + cameraRaycaster.Hit.collider.gameObject.name.ToString());
+            print("Cursor raycast hit " + cameraRaycaster.Hit.collider.gameObject.name.ToString());
             switch (cameraRaycaster.LayerHit)
             {
                 case Layer.Walkable:
+                    print("Walkable hit");
                     currentClickTarget = cameraRaycaster.Hit.point;
                     break;
                 case Layer.Enemy:

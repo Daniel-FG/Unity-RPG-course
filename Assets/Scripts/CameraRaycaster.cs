@@ -7,17 +7,21 @@ public class CameraRaycaster : MonoBehaviour
     [SerializeField] private float distanceToBackground = 100f;
     private Camera viewCamera;
 
-    private RaycastHit m_hit;
+    private RaycastHit hit;
     public RaycastHit Hit
     {
-        get { return m_hit; }
+        get { return hit; }
     }
 
-    private Layer m_layerHit;
+    private Layer layerHit, temp;
     public Layer LayerHit
     {
-        get { return m_layerHit; }
+        get { return layerHit; }
     }
+
+    public delegate void OnLayerChange(Layer newLayer);  //宣告委派函式
+    public event OnLayerChange LayerChangeObservers;  //新建一個委派清單  可以省略event關鍵字
+    
 
     void Start()
     {
@@ -29,18 +33,22 @@ public class CameraRaycaster : MonoBehaviour
         // Look for and return priority layer hit
         foreach (Layer layer in layerPriorities)
         {
-            var hit = RaycastForLayer(layer);
-            if (hit.HasValue)
+            var rayHit = RaycastForLayer(layer);
+            if (rayHit.HasValue)
             {
-                m_hit = hit.Value;
-                m_layerHit = layer;
+                hit = rayHit.Value;
+                if (layerHit != layer)
+                {
+                    layerHit = layer;
+                    LayerChangeObservers(layer);  //呼叫委派關鍵字  傳送訊息到委派清單中
+                }
                 return;
             }
         }
 
         // Otherwise return background hit
-        m_hit.distance = distanceToBackground;
-        m_layerHit = Layer.RaycastEndStop;
+        hit.distance = distanceToBackground;
+        layerHit = Layer.RaycastEndStop;
     }
 
     //在回傳類別後方加上一個?  可以讓函式回傳null

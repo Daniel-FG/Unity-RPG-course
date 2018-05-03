@@ -12,15 +12,17 @@ public class CursorAffordance : MonoBehaviour
     private Vector2 cursorHotSpot = new Vector2(0, 0);  //游標的點擊位置  (0, 0)為左上角滑鼠尖端
     private CameraRaycaster cameraRaycaster;
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         cameraRaycaster = FindObjectOfType<CameraRaycaster>();
+        cameraRaycaster.LayerChangeObservers += OnLayerChange;  //將OnLayerChange()註冊進委派清單中
+        //cameraRaycaster.LayerChangeObservers = OnLayerChange;  //此行意思為覆蓋而不是增加  使用event關鍵字後則不允許此寫法
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    private void OnLayerChange(Layer newLayer)
     {
-        switch (cameraRaycaster.LayerHit)  //TODO 考慮改成有變化時在改變就好了
+        switch (newLayer)  //TODO 考慮改成有變化時在改變就好了
         {
             case Layer.Walkable:
                 Cursor.SetCursor(walkable, cursorHotSpot, CursorMode.Auto);  //Cursor.SetCursor() 設定自己想要的游標圖
