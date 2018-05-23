@@ -49,6 +49,7 @@ public class CameraRaycaster : MonoBehaviour
         // Otherwise return background hit
         hit.distance = distanceToBackground;
         layerHit = Layer.RaycastEndStop;
+        LayerChangeObservers(layerHit);
     }
 
     //在回傳類別後方加上一個?  可以讓函式回傳null
