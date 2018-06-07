@@ -981,6 +981,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3821bb7c28e605d44b2d11474ad97800, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1848505738
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4706765740792880, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706765740792880, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706765740792880, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706765740792880, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706765740792880, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706765740792880, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706765740792880, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706765740792880, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 284b5b4ef7a53b3439c0a7bf2f84043a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1889043139 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4620483533467056, guid: 3821bb7c28e605d44b2d11474ad97800,
