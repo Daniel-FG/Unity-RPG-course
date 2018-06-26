@@ -15,11 +15,11 @@ public class CameraRaycaster : MonoBehaviour
     [SerializeField] private int[] layerPriorities;
 
     private float maxRaycastDepth = 100f; // Hard coded value
-	private int topPriorityLayerLastFrame = -1; // So get ? from start with Default layer terrain
+	private int topPriorityLayerLastFrame = -1; // 設成-1之後在最初地形上可以得到?問號游標
 
     void Update()
 	{
-		// Check if pointer is over an interactable UI element
+		//檢查游標是否在可互動的物件上
 		if (EventSystem.current.IsPointerOverGameObject ())
 		{
 			NotifyObserersIfLayerChanged (5);
