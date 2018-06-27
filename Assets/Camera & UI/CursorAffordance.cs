@@ -8,9 +8,10 @@ public class CursorAffordance : MonoBehaviour
     [SerializeField] private Texture2D walkable = null;
     [SerializeField] private Texture2D enemy = null;
     [SerializeField] private Texture2D nowhere = null;
-    [SerializeField] private const int walkableLayer = 0;
-    [SerializeField] private const int enemyLayer = 1;
-    [SerializeField] private const int unknownLayer = 2;
+
+    private const int walkableLayer = 8;
+    private const int enemyLayer = 9;
+    private const int unknownLayer = 10;
 
     private Vector2 cursorHotSpot = new Vector2(0, 0);  //游標的點擊位置  (0, 0)為左上角滑鼠尖端
     private CameraRaycaster cameraRaycaster;

@@ -11,19 +11,20 @@ public class CameraRaycaster : MonoBehaviour
     public delegate void OnClickPriorityLayer(RaycastHit raycastHit, int layerHit);  //宣告委派類別  用於通知滑鼠點擊時的最高Layer層級為何
     public event OnClickPriorityLayer notifyMouseClickObservers; // instantiate an observer set
     
-    // INSPECTOR PROPERTIES RENDERED BY CUSTOM EDITOR SCRIPT
+    //SerializeField的變數可以利用自訂Editor Script顯示
     [SerializeField] private int[] layerPriorities;
+    //[SerializeField] private string stringToPrint = "new string";
 
-    private float maxRaycastDepth = 100f; // Hard coded value
-	private int topPriorityLayerLastFrame = -1; // 設成-1之後在最初地形上可以得到?問號游標
+    private float maxRaycastDepth = 100f;  //寫死的最大Raycast範圍
+	private int topPriorityLayerLastFrame = -1;  //設成-1之後在最初地形上可以得到?問號游標
 
     void Update()
 	{
-		//檢查游標是否在可互動的物件上
-		if (EventSystem.current.IsPointerOverGameObject ())
-		{
-			NotifyObserersIfLayerChanged (5);
-			return; // Stop looking for other objects
+		
+		if (EventSystem.current.IsPointerOverGameObject ())  //如果游標在UI物件上顯示問號
+        {
+			NotifyObserersIfLayerChanged (5);  //回傳目前是在UI Layer  將會顯示問號
+			return;  //不再找尋UI背後的layer
 		}
 
 		// Raycast to max depth, every frame as things can move under mouse
@@ -46,6 +47,8 @@ public class CameraRaycaster : MonoBehaviour
 		{
 			notifyMouseClickObservers (priorityHit.Value, layerHit);
 		}
+
+        print(stringToPrint);
 	}
 
 	void NotifyObserersIfLayerChanged(int newLayer)
