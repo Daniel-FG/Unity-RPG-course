@@ -47,11 +47,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private Vector3 ShortDestination(Vector3 destination, float shortening)  //回傳短版的目的地
-    {
-        Vector3 reductionVector = (destination - transform.position).normalized * shortening;  //找出與行走方向一樣的向量並且縮短
-        return destination - reductionVector;  //減掉縮短的向量並回傳
-    }
+    //private Vector3 ShortDestination(Vector3 destination, float shortening)  //回傳短版的目的地
+    //{
+    //    Vector3 reductionVector = (destination - transform.position).normalized * shortening;  //找出與行走方向一樣的向量並且縮短
+    //    return destination - reductionVector;  //減掉縮短的向量並回傳
+    //}
 
     //private void OnDrawGizmos()  //在Game Scene中把Gizmo打開之後每禎呼叫
     //{

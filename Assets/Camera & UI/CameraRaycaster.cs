@@ -28,8 +28,8 @@ public class CameraRaycaster : MonoBehaviour
 		}
 
 		// Raycast to max depth, every frame as things can move under mouse
-		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-		RaycastHit[] raycastHits = Physics.RaycastAll (ray, maxRaycastDepth);
+		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);  //由Main Camera射出到滑鼠位置的Ray
+		RaycastHit[] raycastHits = Physics.RaycastAll (ray, maxRaycastDepth);  //用來儲存Ray打到的所有Collider
 
         RaycastHit? priorityHit = FindTopPriorityHit(raycastHits);
         if (!priorityHit.HasValue) // if hit no priority object
@@ -76,10 +76,10 @@ public class CameraRaycaster : MonoBehaviour
 			{
 				if (hit.collider.gameObject.layer == layer)
 				{
-					return hit; // stop looking
+					return hit;  // stop looking
 				}
 			}
 		}
-		return null; // because cannot use GameObject? nullable
+		return null;  // because cannot use GameObject? nullable
 	}
 }
