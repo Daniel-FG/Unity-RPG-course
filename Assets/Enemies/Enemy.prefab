@@ -723,6 +723,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1547356083352300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4844633303036894}
+  m_Layer: 9
+  m_Name: Turrent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1555929569239836
 GameObject:
   m_ObjectHideFlags: 1
@@ -2231,6 +2246,19 @@ Transform:
   m_Father: {fileID: 4243945645967326}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4844633303036894
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1547356083352300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4972248779535122}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4845918289860020
 Transform:
   m_ObjectHideFlags: 1
@@ -2482,6 +2510,7 @@ Transform:
   - {fileID: 4343784647506142}
   - {fileID: 4503080433834822}
   - {fileID: 4745136807980996}
+  - {fileID: 4844633303036894}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2572,9 +2601,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e523088484d05704faaf807b451586bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   detectRadius: 6.77
   attackRadius: 4.59
-  maxHealth: 100
+  damagePerShot: 9
+  projectileToUse: {fileID: 1446034816057186, guid: 49723188b41d57445878f63141b01a4d,
+    type: 2}
+  turrent: {fileID: 1547356083352300}
 --- !u!136 &136435289205081330
 CapsuleCollider:
   m_ObjectHideFlags: 1

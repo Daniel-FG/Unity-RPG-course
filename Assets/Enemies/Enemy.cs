@@ -5,14 +5,19 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
-    public float detectRadius = 5f;  //玩家進到此偵測範圍內會追逐玩家
-    public float attackRadius = 5f;
-
     [SerializeField] private float maxHealth = 100f;  //最大血量
+    [SerializeField] private float detectRadius = 5f;  //玩家進到此偵測範圍內會追逐玩家
+    [SerializeField] private float attackRadius = 5f;  //玩家進到此範圍會射擊玩家
+    [SerializeField] private float damagePerShot = 9f;  //每顆子彈的殺傷力
+    [SerializeField] private float secondsPerShot = 0.5f;  //重複射擊的時間間隔
+    [SerializeField] private Vector3 aimOffset = new Vector3(0f, 1f, 0f);  //瞄準方位補償
+    [SerializeField] private GameObject projectileToUse;  //子彈
+    [SerializeField] private GameObject turrent;  //發射子彈的物件
 
     private AICharacterControl aiCharacterControl;
     private GameObject player;
     private ThirdPersonCharacter thirdPersonControl = null;
+    private bool isAttacking = false;
     private float currentHealth = 100f;
     public float HealthAsPercentage
     {
@@ -41,11 +46,29 @@ public class Enemy : MonoBehaviour, IDamagable
             aiCharacterControl.SetTarget(transform);
         }
 
-        if (distanceToPlayer <= attackRadius)
+        if (distanceToPlayer <= attackRadius && !isAttacking)
         {
-            print(name + " attacking player");
-            //TODO instantiate projectile
+            isAttacking = true;
+            InvokeRepeating("ShootProjectile", 0f, secondsPerShot);
         }
+
+        if (distanceToPlayer > attackRadius)
+        {
+            isAttacking = false;
+            CancelInvoke();
+        }
+    }
+
+    private void ShootProjectile()
+    {
+        GameObject newProjectile = Instantiate(projectileToUse, turrent.transform.position, Quaternion.identity);  //產生子彈
+        Projectile projectileComponent = newProjectile.GetComponent<Projectile>();  //取得子彈的Projectile Component
+        projectileComponent.SetDamage(damagePerShot);  //設定子彈傷害
+
+        Vector3 attackDirection = (player.transform.position - turrent.transform.position + aimOffset).normalized;  //取得射擊方向
+        projectileComponent.GetComponent<Rigidbody>().velocity = attackDirection * projectileComponent.projectileSpeed;  //設定射擊速度
+
+        //TODO Destory fired projectiles
     }
 
     public void TakeDamage(float damage)
